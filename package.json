@@ -7,6 +7,7 @@
     "clean": "rm -rf dist",
     "dev": "NODE_ENV=development ./node_modules/.bin/babel-node devServer",
     "build": "npm run clean && NODE_ENV=production ./node_modules/.bin/babel src -d dist",
+    "gh": "NODE_ENV=gh ./node_modules/.bin/babel-node compile",
     "lint": "./node_modules/.bin/eslint ./",
     "prepublish": "npm run build"
   },
@@ -27,7 +28,6 @@
     "eslint-plugin-babel": "^3.1.0",
     "eslint-plugin-react": "^4.2.3",
     "express": "^4.13.4",
-    "html-webpack-plugin": "^2.15.0",
     "json-loader": "^0.5.4",
     "pre-commit": "^1.1.2",
     "webpack": "^1.12.14",

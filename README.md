@@ -1,2 +1,2 @@
-react + echarts
+react + echarts gh-pages
 

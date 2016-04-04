@@ -30,4 +30,4 @@ react + echarts
 
 ```
 
-[在线DEMO](http://liekkas.github.io/rc-echarts)
+[在线DEMO](http://liekkas.github.io/re-echarts)

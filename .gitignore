@@ -2,6 +2,6 @@
 *.log
 
 node_modules
-
+.idea
 dist
 coverage

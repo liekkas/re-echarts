@@ -2,16 +2,19 @@
   "name": "re-echarts",
   "version": "1.0.0",
   "description": "react echarts",
-  "main": "dist/index.js",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "rm -rf lib",
     "dev": "NODE_ENV=development ./node_modules/.bin/babel-node devServer",
-    "build": "npm run clean && NODE_ENV=production ./node_modules/.bin/babel src -d dist",
+    "build": "npm run clean && NODE_ENV=production ./node_modules/.bin/babel src -d lib",
     "gh": "NODE_ENV=gh ./node_modules/.bin/babel-node compile",
     "lint": "./node_modules/.bin/eslint ./",
     "prepublish": "npm run build"
   },
-  "keywords": [],
+  "keywords": ["react","echarts"],
   "author": "liekkas.zeng",
   "license": "MIT",
   "devDependencies": {
@@ -30,15 +33,15 @@
     "express": "^4.13.4",
     "json-loader": "^0.5.4",
     "pre-commit": "^1.1.2",
+    "react-dom": "^0.14.8",
+    "react": "^0.14.8",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
     "echarts": "^3.1.5",
-    "react": "^0.14.8",
-    "react-addons-shallow-compare": "^0.14.8",
-    "react-dom": "^0.14.8"
+    "react-addons-shallow-compare": "^0.14.8"
   },
   "pre-commit": [
     "lint"

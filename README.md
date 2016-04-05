@@ -1,8 +1,14 @@
 react + echarts
 
+[在线DEMO](http://liekkas.github.io/re-echarts)
+
 ### 安装使用
 >* npm install re-echarts --save
+```
+  import ECharts from 're-echarts'
 
+  <ECharts option={option} />
+```
 ### 开始
 >* git clone https://github.com/liekkas/re-echarts.git
 >* npm i
@@ -15,7 +21,7 @@ react + echarts
 >* 支持动态换肤
 >* 支持动态缩放
 
-### 使用说明
+### Props
 ```
  * option: 图表的配置项和数据
  * notMerge: 可选，是否不跟之前设置的option进行合并，默认为false，即合并
@@ -29,5 +35,3 @@ react + echarts
  * id: 图表id,可选
 
 ```
-
-[在线DEMO](http://liekkas.github.io/re-echarts)

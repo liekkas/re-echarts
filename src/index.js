@@ -9,18 +9,21 @@ class ECharts extends React.Component {
   constructor(props) {
     super(props)
     this.handleResize = this.handleResize.bind(this)
+    this.state = {
+      needInit: false //是否需要初始化,第一次创建或者主题发生变化需要init
+    }
   }
 
-  renderChart(needInit = false) {
+  renderChart() {
     const { id, option, notMerge, notRefreshImmediately, config } = this.props
     const chartDom = this.refs[id]
     const theme = (config && config.theme) || 'default'
+
     let chart = echarts.getInstanceByDom(chartDom)
-    if (!chart || needInit) {
+    if (!chart || this.state.needInit) {
       chart = echarts.init(chartDom,theme)
     }
 
-    chart.clear()
     if (config && config.hasOwnProperty('event')) {
       config.event.map(({ type, handler }) => chart.on(type, handler))
     }
@@ -35,10 +38,8 @@ class ECharts extends React.Component {
         })
     } else {
       chart.hideLoading()
+      chart.setOption(option, notMerge, notRefreshImmediately)
     }
-
-    chart.setOption(option, notMerge, notRefreshImmediately)
-    return chart
   }
 
   componentDidMount() {
@@ -47,13 +48,14 @@ class ECharts extends React.Component {
   }
 
   componentDidUpdate() {
+    console.log('>>> componentDidUpdate', this.props.id)
     this.renderChart()
   }
 
   componentWillReceiveProps(nextProps) {
     //如果主题切换,需要重新创建实例,因为ECharts的主题设置api在init中,
     if (this.props.config.theme !== nextProps.config.theme) {
-      this.renderChart(true)
+      this.setState({ needInit: true })
     }
   }
 
@@ -96,19 +98,18 @@ ECharts.propTypes = {
   notRefreshImmediately: PropTypes.bool,
   style: PropTypes.object,
   config: PropTypes.object,
-  showLoading: PropTypes.bool,
   id: PropTypes.string,
 }
 
 ECharts.defaultProps = {
-  id: 'chart',
+  config: {},
+  notMerge: false,
+  notRefreshImmediately: false,
   style: {
     width: '100%',
     height: '100%',
   },
-  config: {},
-  notMerge: false,
-  notRefreshImmediately: false,
+  id: 'chart',
 }
 
 export default ECharts

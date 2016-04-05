@@ -48,7 +48,6 @@ class ECharts extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('>>> componentDidUpdate', this.props.id)
     this.renderChart()
   }
 

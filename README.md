@@ -19,10 +19,9 @@ react + echarts
         </div>
       )
     }
-
-  详情见[示例代码](https://github.com/liekkas/re-echarts/blob/master/example/App.js)
 ```
->* 注意如果没有安装react/echarts需要一并安装 npm i react echarts --save
+详情见[示例代码](https://github.com/liekkas/re-echarts/blob/master/example/App.js)
+*注意如果没有安装react/echarts需要一并安装 npm i react echarts --save*
 
 ### 开始
 >* git clone https://github.com/liekkas/re-echarts.git

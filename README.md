@@ -6,9 +6,24 @@ react + echarts
 >* npm install re-echarts --save
 ```
   import ECharts from 're-echarts'
+  ...
+  render() {
+      const { mapOption, dayOption, nightOption, mapConfig, dayConfig, nightConfig } = this.state
+      return (
+        <div style={styles.root}>
+          <ECharts option={mapOption} config={mapConfig} style={styles.map} />
+          <div style={styles.container}>
+            <ECharts option={dayOption} config={dayConfig} style={styles.day}/>
+            <ECharts option={nightOption} config={nightConfig} style={styles.night}/>
+          </div>
+        </div>
+      )
+    }
 
-  <ECharts option={option} />
+  详情见[示例代码](https://github.com/liekkas/re-echarts/blob/master/example/App.js)
 ```
+>* 注意如果没有安装react/echarts需要一并安装 npm i react echarts --save
+
 ### 开始
 >* git clone https://github.com/liekkas/re-echarts.git
 >* npm i

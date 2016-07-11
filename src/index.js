@@ -4,11 +4,11 @@
 import React, { PropTypes } from 'react'
 import shallowCompare from 'react-addons-shallow-compare'
 import echarts from 'echarts'
+import elementResizeEvent from 'element-resize-event'
 
 class ECharts extends React.Component {
   constructor(props) {
     super(props)
-    this.handleResize = this.handleResize.bind(this)
     this.state = {
       needInit: false //是否需要初始化,第一次创建或者主题发生变化需要init
     }
@@ -22,6 +22,9 @@ class ECharts extends React.Component {
     let chart = echarts.getInstanceByDom(chartDom)
     if (!chart || this.state.needInit) {
       chart = echarts.init(chartDom,theme)
+      elementResizeEvent(chartDom, function() {
+        chart.resize();
+      })
     }
 
     if (config && config.hasOwnProperty('event')) {
@@ -43,7 +46,6 @@ class ECharts extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
     this.renderChart()
   }
 
@@ -64,13 +66,6 @@ class ECharts extends React.Component {
 
   componentWillUnmount() {
     echarts.dispose(this.refs[this.props.id])
-    window.removeEventListener('resize', this.handleResize);
-  }
-
-  handleResize(e) {
-    const chartDom = this.refs[this.props.id]
-    const chart = echarts.getInstanceByDom(chartDom) || echarts.init(chartDom)
-    chart.resize()
   }
 
   render() {

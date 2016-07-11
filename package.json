@@ -14,7 +14,10 @@
     "lint": "./node_modules/.bin/eslint ./",
     "prepublish": "npm run build"
   },
-  "keywords": ["react","echarts"],
+  "keywords": [
+    "react",
+    "echarts"
+  ],
   "author": "liekkas.zeng",
   "license": "MIT",
   "repository": {
@@ -49,6 +52,8 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "echarts": "^3.2.1",
+    "element-resize-event": "^2.0.5",
     "react-addons-shallow-compare": "^0.14.8"
   },
   "peerDependencies": {

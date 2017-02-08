@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "echarts": "^3.4",
-    "element-resize-event": "^2.0.5"
+    "element-resize-event": "^2.0.7"
   },
   "peerDependencies": {
     "react": "^15.3.2",

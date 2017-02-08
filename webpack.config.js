@@ -44,11 +44,7 @@ webpackConfig.module.loaders = [
   {
     test: /\.json$/,
     loader: 'json'
-  },
-  {
-    test: /\.css$/,
-    loader: 'css-loader'
-  },
+  }
 ]
 
 export default webpackConfig

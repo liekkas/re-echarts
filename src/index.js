@@ -15,13 +15,13 @@ class ECharts extends React.Component {
   }
 
   renderChart() {
-    const { id, option, notMerge, notRefreshImmediately, config } = this.props
+    const { id, option, notMerge, lazyUpdate, config, width, height } = this.props
     const chartDom = this.refs[id]
     const theme = (config && config.theme) || 'default'
 
     let chart = echarts.getInstanceByDom(chartDom)
     if (!chart || this.state.needInit) {
-      chart = echarts.init(chartDom,theme)
+      chart = echarts.init(chartDom,theme, {width, height})
       elementResizeEvent(chartDom, function() {
         chart.resize();
       })
@@ -41,7 +41,7 @@ class ECharts extends React.Component {
         })
     } else {
       chart.hideLoading()
-      chart.setOption(option, notMerge, notRefreshImmediately)
+      chart.setOption(option, notMerge, lazyUpdate)
     }
   }
 
@@ -69,7 +69,7 @@ class ECharts extends React.Component {
   }
 
   render() {
-    return <div ref={this.props.id} style={this.props.style}/>
+    return <div ref={this.props.id} className={this.props.className} style={this.props.style} />
   }
 }
 
@@ -77,7 +77,7 @@ class ECharts extends React.Component {
  *
  * option: 图表的配置项和数据
  * notMerge: 可选，是否不跟之前设置的option进行合并，默认为false，即合并
- * notRefreshImmediately: 可选，在设置完option后是否不立即刷新画布，默认为false，即立即刷新
+ * lazyUpdate: 可选，在设置完option后是否不立即刷新画布，默认为false，即立即刷新
  * style: 图表容器的样式,默认高宽100%
  * config: 设置
  *    theme: 主题
@@ -89,8 +89,11 @@ class ECharts extends React.Component {
 ECharts.propTypes = {
   option: PropTypes.object.isRequired,
   notMerge: PropTypes.bool,
-  notRefreshImmediately: PropTypes.bool,
+  lazyUpdate: PropTypes.bool,
   style: PropTypes.object,
+  className: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
   config: PropTypes.object,
   id: PropTypes.string,
 }
@@ -98,7 +101,7 @@ ECharts.propTypes = {
 ECharts.defaultProps = {
   config: {},
   notMerge: false,
-  notRefreshImmediately: false,
+  lazyUpdate: false,
   style: {
     width: '100%',
     height: '100%',

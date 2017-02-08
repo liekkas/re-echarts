@@ -96,7 +96,7 @@ class App extends React.Component {
       <div style={styles.root}>
         <ECharts option={mapOption} config={mapConfig} style={styles.map} />
         <div style={styles.container}>
-          <ECharts option={dayOption} config={dayConfig} style={styles.day}/>
+          <ECharts option={dayOption} config={dayConfig} className='chart' style={{height: '49%'}}/>
           <ECharts option={nightOption} config={nightConfig} style={styles.night}/>
         </div>
       </div>

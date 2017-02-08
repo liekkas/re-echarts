@@ -15,8 +15,8 @@ class ECharts extends React.Component {
   }
 
   renderChart() {
-    const { id, option, notMerge, lazyUpdate, config, width, height } = this.props
-    const chartDom = this.refs[id]
+    const { option, notMerge, lazyUpdate, config, width, height } = this.props
+    const chartDom = this.chart
     const theme = (config && config.theme) || 'default'
 
     let chart = echarts.getInstanceByDom(chartDom)
@@ -65,11 +65,11 @@ class ECharts extends React.Component {
   }
 
   componentWillUnmount() {
-    echarts.dispose(this.refs[this.props.id])
+    echarts.dispose(this.chart)
   }
 
   render() {
-    return <div ref={this.props.id} className={this.props.className} style={this.props.style} />
+    return <div ref={chart => this.chart = chart} className={this.props.className} style={this.props.style} />
   }
 }
 

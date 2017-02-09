@@ -1,6 +1,6 @@
 {
   "name": "re-echarts",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "react echarts",
   "files": [
     "lib"

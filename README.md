@@ -42,8 +42,6 @@ react + echarts
  * lazyUpdate: 可选，在设置完option后是否不立即刷新画布，默认为false，即立即刷新
  * style: 图表容器的样式,默认高宽100%
  * className
- * width
- * height
  * config: 设置
  *    theme: 主题
  *    event: 事件

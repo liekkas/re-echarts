@@ -15,13 +15,13 @@ class ECharts extends React.Component {
   }
 
   renderChart() {
-    const { option, notMerge, lazyUpdate, config, width, height } = this.props
+    const { option, notMerge, lazyUpdate, config} = this.props
     const chartDom = this.chart
     const theme = (config && config.theme) || 'default'
 
     let chart = echarts.getInstanceByDom(chartDom)
     if (!chart || this.state.needInit) {
-      chart = echarts.init(chartDom,theme, {width, height})
+      chart = echarts.init(chartDom,theme)
       elementResizeEvent(chartDom, function() {
         chart.resize();
       })
@@ -92,8 +92,6 @@ ECharts.propTypes = {
   lazyUpdate: PropTypes.bool,
   style: PropTypes.object,
   className: PropTypes.string,
-  width: PropTypes.number,
-  height: PropTypes.number,
   config: PropTypes.object,
   id: PropTypes.string,
 }

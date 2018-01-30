@@ -30,7 +30,7 @@ react + echarts
 >* open http://localhost:3000
 
 ### 特性
->* 支持ECharts3.0
+>* 支持ECharts4.*
 >* 支持事件联动
 >* 支持动态换肤
 >* 支持动态缩放

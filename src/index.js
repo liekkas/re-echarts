@@ -1,7 +1,8 @@
 /**
  * Created by liekkas on 16/2/19.
  */
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import shallowCompare from 'react-addons-shallow-compare'
 import echarts from 'echarts'
 import elementResizeEvent from 'element-resize-event'
